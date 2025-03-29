@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobQuest</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>JobQuest</h1>
+        <h2>Streamline Your Job Hunt – Search Across Multiple Platforms</h2>
+
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="job-title" placeholder="Job title, keywords, or company">
+                <input type="text" id="location" placeholder="Location (city, state, or country)">
+                <button id="search-btn">Search Jobs</button>
+            </div>
+
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="sort-by">Sort by:</label>
+                    <select id="sort-by">
+                        <option value="relevance">Relevance</option>
+                        <option value="date">Date</option>
+                        <option value="salary">Salary</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="job-type">Job Type:</label>
+                    <select id="job-type">
+                        <option value="all">All</option>
+                        <option value="fulltime">Full-time</option>
+                        <option value="parttime">Part-time</option>
+                        <option value="contractor">Contractor</option>
+                        <option value="intern">Internship</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="hidden">Loading jobs...</div>
+
+        <div id="error-message" class="hidden"></div>
+
+        <div id="results-count" class="hidden">
+            <p>Found <span id="jobs-count">0</span> jobs</p>
+        </div>
+
+        <div id="jobs-container"></div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

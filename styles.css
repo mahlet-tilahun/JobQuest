@@ -1,0 +1,177 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: black;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 50px;
+  color: #333;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+  .search-box {
+    flex-direction: row;
+  }
+}
+
+input,
+select,
+button {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+input {
+  flex: 1;
+}
+
+button {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #3367d6;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+#loading,
+#error-message {
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
+}
+
+#error-message {
+  color: red;
+}
+
+#results-count {
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.job-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: transform 0.2s;
+}
+
+.job-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.job-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #1a73e8;
+}
+
+.company {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.location {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.job-type {
+  display: inline-block;
+  background-color: #e8f0fe;
+  color: #1967d2;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.description {
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.apply-btn {
+  background-color: #34a853;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.apply-btn:hover {
+  background-color: #2e8b47;
+}
+
+.salary {
+  font-weight: bold;
+  color: #188038;
+  margin-bottom: 10px;
+}
+
+.date {
+  font-size: 14px;
+  color: #70757a;
+  margin-bottom: 5px;
+}
