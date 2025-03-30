@@ -41,8 +41,8 @@ Configured Nginx load balancer to distribute traffic between Web01 and Web02:
 
 ### Accessing the Application
 
-The application can be accessed using the load balancer's address:
-http://
+The application can be accessed using the address:
+http://mahlet.tech
 
 ## Credits
 
