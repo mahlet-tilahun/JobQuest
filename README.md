@@ -1,4 +1,4 @@
-# Simple Job Search Application
+# JobQuest - A Simple Job Search Application
 
 This is a basic job search web application that allows users to search for jobs, filter, and sort results. The application uses the JSearch API from RapidAPI to fetch job listings.
 
@@ -13,20 +13,48 @@ This is a basic job search web application that allows users to search for jobs,
 
 ## Technologies Used
 
-- HTML5
-- CSS3
-- JavaScript (Vanilla)
-- JSearch API from RapidAPI
+- Frontend: HTML5, CSS3, JavaScript
+- API Integration: JSearch API from RapidAPI
+- Deployment: Nginx, Load Balancer (Lb01)
+
 
 ## Local Setup
 
+Click [here](https://www.youtube.com/watch?v=GWvZeSn8z5k) for the demo video.
+
+
+To run the application locally, follow these steps:
+
+1. **Clone the repository:**
+
+   ```sh
+   git clone <repository_url>
+   cd JobQuest
+   ```
+
+2. **Set up the API key:**
+
+   - Create a `config.js` file in the root directory.
+   - Add the following line, replacing `your_api_key_here` with your actual API key:
+     ```js
+     const config = { API_KEY: "your_api_key_here" };
+     export default config;
+     ```
+
+3. **Start a local web server:**
+   - You can use Python’s built-in server:
+     ```sh
+     python3 -m http.server 8080
+     ```
+   - Then, open `http://localhost:8080` in your browser.
+     
 ## Deployment
 
 ### Web Servers (Web01 and Web02)
 
 The application has been deployed to two web servers for redundancy:
 
-1. Created directory `/var/www/html/job-search-app` on both servers
+1. Created directory `/var/www/html/jobquest` on both servers
 2. Copied all application files to both servers
 3. Set permissions to 755 for all files
 
