@@ -17,11 +17,9 @@ This is a basic job search web application that allows users to search for jobs,
 - API Integration: JSearch API from RapidAPI
 - Deployment: Nginx, Load Balancer (Lb01)
 
-
 ## Local Setup
 
-Click [here](https://www.youtube.com/watch?v=GWvZeSn8z5k) for the demo video.
-
+Click [here](https://www.youtube.com/watch?v=GWvZeSn8z5k) for a short demo video.
 
 To run the application locally, follow these steps:
 
@@ -44,10 +42,10 @@ To run the application locally, follow these steps:
 3. **Start a local web server:**
    - You can use Python’s built-in server:
      ```sh
-     python3 -m http.server 8080
+     python3 -m http.server 8000
      ```
-   - Then, open `http://localhost:8080` in your browser.
-     
+   - Then, open `http://localhost:8000` in your browser.
+
 ## Deployment
 
 ### Web Servers (Web01 and Web02)
@@ -55,23 +53,57 @@ To run the application locally, follow these steps:
 The application has been deployed to two web servers for redundancy:
 
 1. Created directory `/var/www/html/jobquest` on both servers
+
+mkdir -p /var/www/html/jobquest
+
 2. Copied all application files to both servers
-3. Set permissions to 755 for all files
+
+```
+scp -r ./jobquest/* ubuntu@52.91.14.9:/var/www/html/jobquest/
+scp -r ./jobquest/* ubuntu@54.196.81.191:/var/www/html/jobquest/
+```
+
+3. Set permissions to 755 for all files, for security and execution
+
+```
+sudo chmod -R 755 /var/www/html/jobquest
+```
 
 ### Load Balancer (Lb01)
 
-Configured Nginx load balancer to distribute traffic between Web01 and Web02:
+HAProxy is used to load balance traffic between Web01 and Web02 with support for both HTTP and HTTPS.
 
-1. Created upstream server group including both web servers
-2. Configured proxy pass to forward requests to appropriate server
-3. Verified configuration using `nginx -t`
-4. Restarted Nginx service
+#### HAProxy Config (/etc/haproxy/haproxy.cfg):
+
+```
+frontend http
+    bind *:80
+    default_backend web-server
+
+frontend https
+    bind *:443 ssl crt /etc/ssl/private/haproxy.pem
+    default_backend web-server
+
+backend web-server
+    balance roundrobin
+    server web01 52.91.14.9:80 check
+    server web02 54.196.81.191:80 check
+
+```
+
+- HTTPS is enabled using the SSL certificate at `/etc/ssl/private/haproxy.pem`
+
+- Traffic is load-balanced using the `roundrobin` method
+
+- `check` ensures backend servers are health-checked regularly
 
 ### Accessing the Application
 
 The application can be accessed using the address:
 http://mahlet.tech
 
+
 ## Credits
 
 - [JSearch API on RapidAPI](https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch)
+
