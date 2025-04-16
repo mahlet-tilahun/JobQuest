@@ -44,7 +44,7 @@ To run the application locally, follow these steps:
      ```sh
      python3 -m http.server 8000
      ```
-   - Then, open `http://localhost:8000` in your browser.
+   - Then open your browser at `http://localhost:8000/index.html`
 
 ## Deployment
 
